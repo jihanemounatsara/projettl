@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>NFATODFA</title>
+<script src="compatibility/go.long.js"></script>
+<script src="compatibility/go.min.js"></script>
+<style>
+h4{
+	color:red;
+}
+h2{
+	color:blue;
+}
+ td{
+  border:4px solid black;
+  text-align: center;
+  font-weight: bold;
+ } 
+ .desc{
+  width: 30%;
+  position: absolute;
+  left:60%;
+  top:5%;
+
+ }
+ table{
+  border-collapse: collapse;
+ }
+ .div1,.div2{
+  display: inline-block; 
+ }
+ .div2{
+  margin-left: auto;
+ }
+ .div2 td{
+ }
+ .determi{
+  margin-left: 25%;
+ }
+ .determi h2{
+  margin-left: 15%;
+ }
+ 
+</style>
+</head>
+<body onload="init()">
+<div class="desc">
+  <h1 class="display-5">Transforamtion de NFA à DFA </h1><br><br><br>
+  <h4>Daoudi Mounat</h4>
+  <h4>Hammadi sara</h4>
+  <h4>Ihia jihane</h4>
+</div>
+<div id="sample">
+  {{> myDiagramDiv}}
+  
+  <div>
+    {{> bouton}}
+    {{> json}}
+    {{> myDiagramDivFinal}}
+    <br><br><br><br>
+    <div class="determi">
+        <h2 class="tempTest">Tableau de Transition</h2><br><br><br><br>
+        {{> test}}
+    </div>
+    
+  </div>
+</div>
+</body>
+
+<template name="myDiagramDiv">
+    <div class="diagInit">
+        <div id="myDiagramDiv" align="center" style="border: solid 1px black; width: 50%; height: 400px "></div>
+        </div>
+</template>
+
+<template name="bouton">
+  <div>
+      <button class="btn btn-success" id="SaveButton" onclick="save()">Sauvgarder</button>
+      <button onclick="load()" style="display: none;">charge</button>
+      <div class="supprimer"> 
+	      <button class="btn btn-warning ">Delete</button>
+	      </div>
+	      Diagram Model saved in JSON format:
+  	  </div>
+</template>
+
+<template name="json">
+  <textarea id="mySavedModel" style="width:100%;height:300px; display: none;">
+        { "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"text":"initial:A", "key":-1, "loc":"268.6666660308838 179.6666660308838"},
+{"text":"final:B", "key":-2, "loc":"124 334"}
+ ],
+  "linkDataArray": [ 
+{"from":-1, "to":-1, "points":[327.0543930950107,229.33676372262363,340.0543930950107,251.85342422101903,285.41602395660453,251.85342422101903,298.41602395660453,229.33676372262363], "text":"a"},
+{"from":-1, "to":-2, "points":[293.96695685695414,229.3022557570481,256.86402825747905,278.26419431446516,216.70760749736968,315.56093044216993,168.14287106354547,345.54739753931415], "text":"a"},
+{"from":-2, "to":-2, "points":[159.8430040915273,381.86058442336287,172.8430040915273,404.3772449217583,120.29408089832035,404.37724492175835,133.29408089832035,381.8605844233629], "text":"b"}
+ ]}
+  </textarea>
+</template>
+<template name="myDiagramDivFinal">
+  <div id="myDiagramDivFinal" align="center" style="border: solid 1px black; width: 50%; height: 400px"></div>
+</template>
+
+<template name="test" class="tempTest">
+    <div class="div2">
+       <table class="table table-bordered">
+                {{#each test5}}
+                  <tr></tr><td><h3>{{ name}}</h3></td>
+                {{/each}}
+        </table>
+    </div>
+   <div class="div1">
+         <table class="table table-bordered">
+               <tr>
+                    {{#each test3}}
+                        <td width="20%" style="border: 4px solid red;"><h3>{{ name}} </h3></td> 
+                    {{/each}}
+              </tr>
+        
+              {{#each test6}}
+                  {{#if test7 key colone}}
+              <tr></tr>
+                  {{/if}}
+                  <td><h3>{{ name}}</h3></td> 
+              {{/each}}
+        </table>
+  </div>
+  
+</template>
+</html>
